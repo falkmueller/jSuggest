@@ -9,3 +9,4 @@ jSuggest
 jSuggest is a jQuery Plugin für Suggestion Layer by search over input-fields.
 [Documentation](http://code.falk-m.de/suggest/).
 
+![Screnshot](screenshot.jpg)
