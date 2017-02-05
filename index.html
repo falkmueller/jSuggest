@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Suggest Example</title>
+
+    <!-- Bootstrap -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/suggest.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+        <div class="jumbotron">
+            <div class="container">   
+                <h1>jQuery suggestion plugin</h1>
+                <p>
+                    Supports server and local serach.
+                    Navigation in layer over key-events possible.
+                </p>
+            </div>
+        </div> 
+        <div class="container">
+            <h2>Examples</h2>
+            <form>
+                <div class="form-group">
+                    <label for="search1">search per ajax</label>
+                    <input type="text" class="form-control" id="search1" placeholder="(enter 't' or 'f')" data-suggest="true" data-suggest-url="server.php">
+                </div>
+                
+                <div class="form-group">
+                    <label for="search2">search from array</label>
+                    <input type="text" class="form-control" id="search2" placeholder="(enter 't' or 'f')" data-suggest="true">
+                </div>
+            </form>
+
+        </div>
+      
+      <div class="container">
+            <h2>Usage</h2>
+            1. insert input field<br/>
+            <code>
+                &lt;input type="text" id="search" &gt;
+            </code><br/><br/>
+            
+            2. add jQuery an the suggest plugin<br/>
+            <code>
+               &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&g<br/>
+               &lt;script src="js/suggest.js"&gt;&lt;/script&gt;
+            </code><br/><br/>
+            
+            3. init suggesten<br/>
+            <code>
+                $("#search").suggest({url: "server.php"});<br/>
+                //or<br/>
+                $("#search").suggest({data: ["test1", "test2", "test3"]});
+            </code>
+      </div>
+      
+       <div class="container">
+            <h2>functions</h2>
+            
+            <p>
+                functions can be called after initialization.
+            </p>
+            
+            <code>
+            $("#search").suggest("disable");<br/>
+            $("#search").suggest("enable");<br/>
+            $("#search").suggest("option", "data", ["test1", "test2", "test3"]);
+            </code>
+       </div>
+      
+      <div class="container">
+            <h2>options</h2>
+            
+            <p>
+                options can be set by the "option" function or by initialization.
+            </p>
+            
+            <table class="table">
+                <tr>
+                    <td>
+                        url
+                    </td>
+                    <td>
+                        (default: '') If set, then hte suggest layer call this url to get data from server.
+                        The url is query by Post-request with a "search"-parameter.
+                        The response must be a json-array.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        url_data
+                    </td>
+                    <td>
+                        (default: {}). A Objekt of propertys, they send to server by the request.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        data
+                    </td>
+                    <td>
+                        (default: []) A array of strings to search suggestion-data local. if a "url" is set, "data" are ignored.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        minLetter
+                    </td>
+                    <td>
+                        (default: 1) Minimum count of input before search start.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        maxDisplay
+                    </td>
+                    <td>
+                        (default: 10) Maximum items in suggesteion-Layer
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        layerTemplate
+                    </td>
+                    <td>
+                        (default: &lt;ul class="suggest"&gt;&lt;/ul&gt;) The template fpr the suggestion-Layer
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        itemTemplate
+                    </td>
+                    <td>
+                        (default: &lt;li&gt;&lt;/li&gt;) The template for the items in the layer.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        itemActiveClass
+                    </td>
+                    <td>
+                        (default: "hover") The css class vor the active Layer item.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        searchWait
+                    </td>
+                    <td>
+                        (default: 200) The miliseconts to wait, before search start.
+                    </td>
+                </tr>
+            </table>
+       </div>
+      
+      <div class="jumbotron" style="margin-top: 30px">
+            <div class="container">   
+                &copy; <a href="https://www.falk-m.de" target="_blank">falk-m.de</a>
+            </div>
+        </div> 
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/suggest.js"></script>
+    <script type="text/javascript">
+        $("input[data-suggest]").suggest({test: 1});
+        $("input#search2").suggest("option", "data", ["test1", "test2", "test3", "falk-m"]);
+        $("input#search1").suggest("option", "url_data", {"city": "Leipzig"});
+        //$("input#search1").suggest("disable");
+    </script>
+  </body>
+</html>
